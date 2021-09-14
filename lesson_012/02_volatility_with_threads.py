@@ -74,7 +74,8 @@ directory = "trades"
 path_normalized = os.path.normpath(directory)
 
 tickers = [TickReader(file_for_checking=file) for file in files(path_normalized)]
-
+#TODO тут у меня формируется список потоков
+# Ниже стартует цикл по ним и start().
 for ticker in tickers:
     ticker.start()
     one_tickers_data = [ticker.secid, ticker.volatility_percent]
@@ -83,8 +84,10 @@ for ticker in tickers:
     else:
         list_volatility.append(one_tickers_data)
 
-for ticker in tickers:
-    ticker.join()
+
+#TODO Не понимаю, где поставить join()
+# for ticker in tickers:
+#     ticker.join()
 
 print(f'Максимальная волатильность:')
 list_max_tickers = sorted(list_volatility, key=operator.itemgetter(1), reverse=True)
