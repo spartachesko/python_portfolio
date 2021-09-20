@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-
 import os
 import copy
-import threading
 import operator
+from multiprocessing import Process, Queue
 
 
-# Задача: вычислить 3 тикера с максимальной и 3 тикера с минимальной волатильностью в МНОГОПОТОЧНОМ стиле
+# Задача: вычислить 3 тикера с максимальной и 3 тикера с минимальной волатильностью в МНОГОПРОЦЕССНОМ стиле
 #
 # Бумаги с нулевой волатильностью вывести отдельно.
 # Результаты вывести на консоль в виде:
@@ -22,18 +21,15 @@ import operator
 #       ТИКЕР7, ТИКЕР8, ТИКЕР9, ТИКЕР10, ТИКЕР11, ТИКЕР12
 # Волатильности указывать в порядке убывания. Тикеры с нулевой волатильностью упорядочить по имени.
 #
-# Внимание! это задание можно выполнять только после зачета lesson_012/01_volatility.py !!!
 
-#  тут ваш код в многопоточном стиле
+class TickReader(Process):
 
-
-class TickReader(threading.Thread):
-
-    def __init__(self, file_for_checking, *args, **kwargs):
+    def __init__(self, file_for_checking, ticker_info_receiver, *args, **kwargs):
         super(TickReader, self).__init__(*args, **kwargs)
         self.file_for_checking = file_for_checking
         self.secid = None
         self.volatility_percent = 0
+        self.ticker_info_receiver = ticker_info_receiver
 
     def run(self):
 
@@ -57,9 +53,11 @@ class TickReader(threading.Thread):
             volatility_percent = ((float(max_price) - float(min_price)) / half_sum) * 100
             if volatility_percent < 0:
                 volatility_percent = volatility_percent * (-1)
-            self.volatility_percent = round(volatility_percent, 2)
-            self.secid = secid
+            volatility_percent = round(volatility_percent, 2)
+            self.ticker_info_receiver.put([secid, volatility_percent])
 
+
+#
 
 def files(path):
     for document in os.listdir(path):
@@ -73,8 +71,8 @@ zero_list = []
 list_volatility = []
 directory = "trades"
 path_normalized = os.path.normpath(directory)
-
-tickers = [TickReader(file_for_checking=file) for file in files(path_normalized)]
+ticker_info = Queue()
+tickers = [TickReader(file_for_checking=file, ticker_info_receiver=ticker_info) for file in files(path_normalized)]
 
 for ticker in tickers:
     ticker.start()
@@ -83,9 +81,10 @@ for ticker in tickers:
 
 for ticker in tickers:
 
-    one_tickers_data = [ticker.secid, ticker.volatility_percent]
-    if ticker.volatility_percent == 0:
-        zero_list.append(ticker.secid)
+    secid, volatility = ticker_info.get()
+    one_tickers_data = [secid, volatility]
+    if volatility == 0:
+        zero_list.append(secid)
     else:
         list_volatility.append(one_tickers_data)
 
@@ -110,3 +109,4 @@ print(f'Нулевая волатильность:')
 zero_volatility = sorted(zero_list, reverse=False)
 list_zero_tickers = copy.copy(zero_volatility)
 print(list_zero_tickers)
+
