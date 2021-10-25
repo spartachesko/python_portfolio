@@ -1,5 +1,5 @@
 import unittest
-from lesson_014.bowling import get_score
+from Development_cycle_support.bowling import get_score
 
 
 class BowlingTest(unittest.TestCase):

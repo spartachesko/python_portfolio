@@ -54,7 +54,7 @@ import copy
 #       (обратите внимание на значок скачивания в правом верхнем углу,
 #       см https://drive.google.com/file/d/1M6mW1jI2RdZhdSCEmlbFi5eoAXOR3u6G/view?usp=sharing)
 # 2. Раззиповать средствами операционной системы содержимое архива
-#       в папку python_base/lesson_012/trades
+#       в папку python_base/multithreading/trades
 # 3. В каждом файле в папке trades содержится данные по сделакам по одному тикеру, разделенные запятыми.
 #   Первая строка - название колонок:
 #       SECID - тикер
