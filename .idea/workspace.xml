@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9bcd4b-e74a-4add-8c69-f9b90033ef8b" name="Changes" comment="refresh gitignore">
-      <change afterPath="$PROJECT_DIR$/book_Uchim_python_delaya_krutie_igri/pygameHelloWorld.py" afterDir="false" />
+    <list default="true" id="3b9bcd4b-e74a-4add-8c69-f9b90033ef8b" name="Changes" comment="add pygameHelloWorld.py">
+      <change afterPath="$PROJECT_DIR$/chat_bot_telegram/tg_petrovich.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/start_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/start_python.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -40,7 +40,7 @@
     <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chat_bot_telegram" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635929257220</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add pygameHelloWorld.py">
+      <created>1635931758268</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635931758268</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,6 +188,7 @@
     <MESSAGE value="Поддержка цикла разработки - пройдено" />
     <MESSAGE value="Commit" />
     <MESSAGE value="refresh gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="refresh gitignore" />
+    <MESSAGE value="add pygameHelloWorld.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pygameHelloWorld.py" />
   </component>
 </project>
